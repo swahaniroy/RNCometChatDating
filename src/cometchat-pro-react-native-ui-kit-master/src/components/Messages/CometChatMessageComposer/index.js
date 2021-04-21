@@ -575,22 +575,6 @@ export default class CometChatMessageComposer extends React.PureComponent {
     }
 
     let liveReactionBtn = null;
-    if (
-      Object.prototype.hasOwnProperty.call(
-        enums.LIVE_REACTIONS,
-        this.props.reaction,
-      )
-    ) {
-      const reactionName = this.props.reaction;
-      liveReactionBtn = (
-        <TouchableOpacity
-          style={style.reactionBtnStyle}
-          disabled={disabled}
-          onPress={this.sendReaction}>
-          <Icon name={`${reactionName}`} size={30} color="#de3a39" />
-        </TouchableOpacity>
-      );
-    }
 
     let sendBtn = (
       <TouchableOpacity
@@ -775,14 +759,6 @@ export default class CometChatMessageComposer extends React.PureComponent {
           sendMediaMessage={this.sendMediaMessage}
         />
         <View style={style.mainContainer}>
-          <TouchableOpacity
-            style={style.plusCircleContainer}
-            disabled={disabled}
-            onPress={() => {
-              this.setState({ composerActionsVisible: true });
-            }}>
-            <AntDIcon size={26} name="pluscircle" color="rgba(0,0,0,0.35)" />
-          </TouchableOpacity>
           <View style={style.textInputContainer}>
             <TextInput
               style={style.messageInputStyle}

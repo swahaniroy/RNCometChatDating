@@ -279,15 +279,6 @@ class CometChatMessageHeader extends React.Component {
     return (
       <View style={styles.headerContainer}>
         <TouchableOpacity
-          style={styles.backButtonContainer}
-          onPress={() => this.props.actionGenerated(actions.GO_BACK)}>
-          <Icon
-            name="chevron-back-sharp"
-            size={32}
-            color={this.props.theme.color.blue}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
           onPress={() => this.props.actionGenerated(actions.VIEW_DETAIL)}
           style={styles.headerDetailContainer}>
           <View
@@ -295,6 +286,7 @@ class CometChatMessageHeader extends React.Component {
               styles.avatarContainer,
               {
                 backgroundColor: 'rgba(51,153,255,0.25)',
+                marginLeft: 10,
               },
             ]}>
             <CometChatAvatar

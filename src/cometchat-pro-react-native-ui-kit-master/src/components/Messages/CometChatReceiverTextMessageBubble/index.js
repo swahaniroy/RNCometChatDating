@@ -215,12 +215,6 @@ const CometChatReceiverTextMessageBubble = (props) => {
                 {...props}
                 message={message}
               />
-              <CometChatMessageReactions
-                theme={props.theme}
-                {...props}
-                message={message}
-                showMessage={props?.showMessage}
-              />
             </View>
           </View>
         </View>
