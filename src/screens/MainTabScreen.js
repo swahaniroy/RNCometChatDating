@@ -5,6 +5,7 @@ import { withTheme } from "react-native-paper";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { CometChat } from "@cometchat-pro/react-native-chat";
 import Config from "react-native-config";
+import auth from "@react-native-firebase/auth";
 
 import MatchStackScreen from "./MatchStackScreen";
 import ChatStackScreen from "./ChatStackScreen";
@@ -31,6 +32,8 @@ const MainTabScreen = ({ route, navigation, theme }) => {
           console.log("Login Successful:", { user });
         },
         (error) => {
+          alert("Login Failed. Please try again.");
+          auth().signOut();
           console.log("Login failed with exception:", { error });
         }
       );
