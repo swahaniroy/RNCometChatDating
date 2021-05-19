@@ -6,10 +6,12 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { CometChat } from "@cometchat-pro/react-native-chat";
 import Config from "react-native-config";
 
-import MatchScreen from "./MatchScreen";
+import MatchStackScreen from "./MatchStackScreen";
 import ChatStackScreen from "./ChatStackScreen";
 
 import { UserContext } from "../context/UserContext";
+
+import LogoutButton from "../components/LogoutButton";
 
 import config from "../config";
 
@@ -38,8 +40,8 @@ const MainTabScreen = ({ route, navigation, theme }) => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Match"
-        component={MatchScreen}
+        name="MatchStack"
+        component={MatchStackScreen}
         options={{
           tabBarLabel: "Match",
           tabBarIcon: ({ color, size }) => (

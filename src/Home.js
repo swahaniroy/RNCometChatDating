@@ -1,5 +1,5 @@
-import React, { useState, useCallback, useEffect, useContext } from "react";
-import { TouchableOpacity, View, StyleSheet } from "react-native";
+import React, { useState, useEffect, useContext } from "react";
+import { TouchableOpacity, View } from "react-native";
 import { Text } from "react-native-paper";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -64,10 +64,6 @@ const Home = () => {
     return subscriber;
   }, []);
 
-  const logout = useCallback(async () => {
-    await auth().signOut();
-  }, []);
-
   if (isLoading) {
     return <SplashScreen />;
   }
@@ -87,14 +83,7 @@ const Home = () => {
             name="MainTab"
             component={MainTabScreen}
             options={{
-              title: config.APP_TITLE,
-              headerRight: () => (
-                <TouchableOpacity onPress={logout}>
-                  <View style={styles.buttonContainer}>
-                    <Text>Logout</Text>
-                  </View>
-                </TouchableOpacity>
-              ),
+              headerShown: false,
             }}
           />
         )}
@@ -102,11 +91,5 @@ const Home = () => {
     </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  buttonContainer: {
-    padding: 10,
-  },
-});
 
 export default Home;

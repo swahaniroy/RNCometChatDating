@@ -1,25 +1,17 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import ChatListScreen from "./ChatListScreen";
-import Messages from "./Messages";
+import MatchScreen from "./MatchScreen";
 import LogoutButton from "../components/LogoutButton";
 
 const Stack = createStackNavigator();
 
-const ChatStackScreen = () => {
+const MatchStackScreen = () => {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="ChatList"
-				component={ChatListScreen}
-				options={{
-					headerRight: () => <LogoutButton />,
-				}}
-			/>
-			<Stack.Screen
-				name="Messages"
-				component={Messages}
+				name="Match"
+				component={MatchScreen}
 				options={{
 					headerRight: () => <LogoutButton />,
 				}}
@@ -28,4 +20,4 @@ const ChatStackScreen = () => {
 	);
 };
 
-export default ChatStackScreen;
+export default MatchStackScreen;
