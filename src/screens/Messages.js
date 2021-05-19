@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { CometChat } from "@cometchat-pro/react-native-chat";
-import { CometChatMessages } from "../cometchat-pro-react-native-ui-kit-master";
+import { CometChatMessages } from "../cometchat-pro-react-native-ui-kit";
 
 const Messages = ({ route }) => {
 	const { matchId, userName } = route.params;
