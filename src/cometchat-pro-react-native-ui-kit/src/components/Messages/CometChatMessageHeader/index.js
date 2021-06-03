@@ -1,24 +1,24 @@
 /* eslint-disable radix */
-import React from 'react';
-import { MessageHeaderManager } from './controller';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
-import { CometChatUserPresence, CometChatAvatar } from '../../Shared';
-import * as enums from '../../../utils/enums';
-import * as actions from '../../../utils/actions';
+import React from "react";
+import { MessageHeaderManager } from "./controller";
+import { View, Text, TouchableOpacity, Image } from "react-native";
+import { CometChatUserPresence, CometChatAvatar } from "../../Shared";
+import * as enums from "../../../utils/enums";
+import * as actions from "../../../utils/actions";
 
-import styles from './styles';
-import audioCallIcon from './resources/audioCall.png';
-import videoCallIcon from './resources/videoCall.png';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { logger } from '../../../utils/common';
-import { CometChat } from '@cometchat-pro/react-native-chat';
+import styles from "./styles";
+import audioCallIcon from "./resources/audioCall.png";
+import videoCallIcon from "./resources/videoCall.png";
+import Icon from "react-native-vector-icons/Ionicons";
+import { logger } from "../../../utils/common";
+import { CometChat } from "@cometchat-pro/react-native-chat";
 class CometChatMessageHeader extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      status: '',
-      presence: 'offline',
+      status: "",
+      presence: "offline",
     };
   }
 
@@ -80,17 +80,17 @@ class CometChatMessageHeader extends React.Component {
         this.props.item.lastActiveAt
       ) {
         status = `Last active at: ${new Date(
-          this.props.item.lastActiveAt * 1000,
-        ).toLocaleTimeString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          hour: 'numeric',
-          minute: 'numeric',
+          this.props.item.lastActiveAt * 1000
+        ).toLocaleTimeString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "numeric",
+          minute: "numeric",
           hour12: true,
         })}`;
       } else if (this.props.item.status === CometChat.USER_STATUS.OFFLINE) {
-        status = 'offline';
+        status = "offline";
       }
 
       this.setState({ status, presence });
@@ -177,7 +177,7 @@ class CometChatMessageHeader extends React.Component {
             this.props.type === item.receiverType &&
             this.props.item.uid === item.sender.uid
           ) {
-            this.setState({ status: 'typing...' });
+            this.setState({ status: "typing..." });
             this.props.actionGenerated(actions.SHOW_REACTION, item);
           }
           break;
@@ -197,8 +197,8 @@ class CometChatMessageHeader extends React.Component {
           ) {
             this.props.actionGenerated(actions.STOP_REACTION, item);
 
-            if (this.state.presence === 'online') {
-              this.setState({ status: 'online', presence: 'online' });
+            if (this.state.presence === "online") {
+              this.setState({ status: "online", presence: "online" });
             } else {
               this.setStatusForUser();
             }
@@ -245,14 +245,16 @@ class CometChatMessageHeader extends React.Component {
     let audioCallBtn = (
       <TouchableOpacity
         onPress={() => this.props.actionGenerated(actions.AUDIO_CALL)}
-        style={styles.audioCallContainer}>
+        style={styles.audioCallContainer}
+      >
         <Image source={audioCallIcon} style={styles.callIcon} />
       </TouchableOpacity>
     );
     let videoCallBtn = (
       <TouchableOpacity
         onPress={() => this.props.actionGenerated(actions.VIDEO_CALL)}
-        style={styles.videoCallContainer}>
+        style={styles.videoCallContainer}
+      >
         <Image source={videoCallIcon} style={styles.callIcon} />
       </TouchableOpacity>
     );
@@ -279,16 +281,29 @@ class CometChatMessageHeader extends React.Component {
     return (
       <View style={styles.headerContainer}>
         <TouchableOpacity
+          style={styles.backButtonContainer}
+          onPress={() => this.props.actionGenerated(actions.GO_BACK)}
+        >
+          <Icon
+            name="chevron-back-sharp"
+            size={32}
+            color={this.props.theme.color.blue}
+          />
+        </TouchableOpacity>
+
+        <TouchableOpacity
           onPress={() => this.props.actionGenerated(actions.VIEW_DETAIL)}
-          style={styles.headerDetailContainer}>
+          style={styles.headerDetailContainer}
+        >
           <View
             style={[
               styles.avatarContainer,
               {
-                backgroundColor: 'rgba(51,153,255,0.25)',
+                backgroundColor: "rgba(51,153,255,0.25)",
                 marginLeft: 10,
               },
-            ]}>
+            ]}
+          >
             <CometChatAvatar
               image={{ uri: image }}
               cornerRadius={25}

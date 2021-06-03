@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { CometChat } from "@cometchat-pro/react-native-chat";
 import { CometChatMessages } from "../cometchat-pro-react-native-ui-kit";
 
-const Messages = ({ route }) => {
+const Messages = ({ navigation, route }) => {
 	const { matchId, userName } = route.params;
 	const avatar = `https://robohash.org/${userName}`;
 	const [localUser, setLocalUser] = useState(null);
@@ -43,6 +43,7 @@ const Messages = ({ route }) => {
 					actionGenerated={actionGenerated}
 					audioCall={false}
 					videoCall={false}
+					navigation={navigation}
 				/>
 			</View>
 		);

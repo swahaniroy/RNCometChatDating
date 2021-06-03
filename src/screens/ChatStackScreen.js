@@ -21,7 +21,7 @@ const ChatStackScreen = () => {
 				name="Messages"
 				component={Messages}
 				options={{
-					headerRight: () => <LogoutButton />,
+					headerShown: false,
 				}}
 			/>
 		</Stack.Navigator>
