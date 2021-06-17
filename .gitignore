@@ -62,6 +62,6 @@ buck-out/
 server/.env
 
 android/app/google-services.json
-android/app/debug.keystore
+
 
 ios/GoogleService-Info.plist
