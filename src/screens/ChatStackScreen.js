@@ -7,7 +7,12 @@ import LogoutButton from "../components/LogoutButton";
 
 const Stack = createStackNavigator();
 
-const ChatStackScreen = () => {
+const ChatStackScreen = ({ navigation, route }) => {
+	if (route.state && route.state.index > 0) {
+		navigation.setOptions({ tabBarVisible: false });
+	} else {
+		navigation.setOptions({ tabBarVisible: true });
+	}
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
